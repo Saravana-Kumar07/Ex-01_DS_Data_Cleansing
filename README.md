@@ -8,7 +8,7 @@ To read the given data and perform data cleaning and save the cleaned data to a 
 Data cleaning is the process of preparing data for analysis by removing or modifying data that is incorrect ,incompleted , irrelevant , duplicated or improperly formatted. 
 Data cleaning is not simply about erasing data ,but rather finding a way to maximize datasets accuracy without necessarily deleting the information. 
 
-# ALGORITHM
+# ALGORITHM:
 ### STEP 1
 Read the given Data
 ### STEP 2
@@ -19,5 +19,38 @@ Remove the null values from the data
 Save the Clean data to the file
 
 
-# CODE
-# OUPUT
+# CODE:
+```
+import pandas as pd
+df=pd.read_csv("Data_set.csv")
+print(df)
+df.head(10)
+df.info()
+df.isnull()
+df.isnull().sum()
+df['show_name']=df['show_name'].fillna(df['aired_on'].mode()[0])
+df['aired_on']=df['aired_on'].fillna(df['aired_on'].mode()[0])
+df['original_network']=df['original_network'].fillna(df['aired_on'].mode()[0])
+df.head()
+df['rating']=df['rating'].fillna(df['rating'].mean())
+df['current_overall_rank']=df['current_overall_rank'].fillna(df['current_overall_rank'].mean())
+df.head()
+df['watchers']=df['watchers'].fillna(df['watchers'].median())
+df.head()
+df.info()
+df.isnull().sum()
+```
+# OUTPUT:
+## Before cleaning:
+![output](./out1.png)
+![output](./out2.png)
+![output](./out3.png)
+![output](./out4.png)
+![output](./out5.png)
+![output](./out6.png)
+## After cleaning:
+![output](./out7.png)
+![output](./out8.png)
+
+# RESULT:
+Thus, the given data is read, cleansed and the cleaned data is saved into the file.
